@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="/CSS/bodycolor.css">
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .containerBg{
+            background-color: rgb(245, 245, 245);
+        }
+    </style>
+</head>
+
+<body>
+    {{>navbar}}
+
+        <div class="mt-3">
+            <h2 class="text-center">Welcome Sir,</h2>
+        </div>
+    <div class="container border bg-light mt-3 shadow-lg containerBg">
+        <div class="row" style="height: 550px;">
+            <div class="col d-flex flex-column justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="card shadow-lg rounded" style="width: 18rem;">
+                         <img src="/images/addStudent.jfif" class="card-img-top" alt="...">
+                        <div class="card-body " style="background:#f2f2f2;">
+                            <h5 class="card-title">New Student</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"></h6>
+                            <p class="card-text">Add new student with the link provided below.</p>
+                            <a href="/newStudent" class="card-link">New Student</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="card shadow-lg rounded-lg" style="width: 18rem;">
+                         <img src="/images/allStudents.png" class="card-img-top" alt="...">
+                        <div class="card-body" style="background:#f2f2f2;">
+                            <h5 class="card-title">Students</h5>
+                            {{!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> --}}
+                            <p class="card-text">View all the current Students studying in the Institution</p>
+                            <a href="/allStudents" class="card-link">All Students</a>
+                            {{!-- <a href="#" class="card-link">Another link</a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex flex-column justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="card shadow-lg rounded" style="width: 18rem;">
+                         <img src="/images/performance.png" class="card-img-top"  width="250" height="200" alt="...">
+                        <div class="card-body" style="background:#f2f2f2;">
+                            <h5 class="card-title">Perfomance</h5>
+                            {{!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> --}}
+                            <p class="card-text">Perfomance of All present Students</p>
+                            <a href="/performance" class="card-link">Perfomance </a>
+                            {{!-- <a href="#" class="card-link">Another link</a> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {{>footer}}
+</body>
+
+</html>

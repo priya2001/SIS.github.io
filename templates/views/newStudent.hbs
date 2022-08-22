@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/detail.css">
+    <link rel="stylesheet" href="/CSS/bodyColor.css">
+
+</head>
+
+<body>
+    {{>navbar}}
+
+    <div class="container mt-5 mb-5  pb-3">
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-10 bg-light shadow-lg rounded-3">
+                <div class="row">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-10 m-3">
+                        <h2 class="my-2 text-center">Personal Details</h2>
+                        <form action="./newStudent" method="post">
+                            <form>
+                                <div class="row mb-3">
+                                    <label for="RegistrationNum" class="col-sm-3 col-form-label">Registration
+                                        Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputRegistration"
+                                            name="registrationNum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Year" class="col-sm-3 col-form-label">Semester/Year</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputyear" name="year">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputyear" name="fName">
+                                    </div>
+                                    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="inputyear" name="lname">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="fathername" class="col-sm-3 col-form-label">Father's Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputFathername" name="father">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Motherrname" class="col-sm-3 col-form-label">Mother's Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputMothername" name="mother">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="dateofbirth" class="col-sm-3 col-form-label">Date of Birth</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputDOB" name="dateofBirth">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Category" class="col-sm-3 col-form-label">Category</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputCategory" name="category">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="mobile" class="col-sm-3 col-form-label">Mobile Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputmobile" name="mobile">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputEmail" class="col-sm-3 col-form-label">Email Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="inputEmail3" name="email">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="course" class="col-sm-3 col-form-label">Course</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="course" name="course">
+                                    </div>
+                                </div>
+                                <h2 class="my-4 text-center">Qualification</h2>
+                                <h4>High school</h4>
+                                <div class="row mb-3">
+                                    <label for="highRollNumber" class="col-sm-3 col-form-label">Roll Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputRollNumber"
+                                            name="highSchoolRollNum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="highPassigyear" class="col-sm-3 col-form-label">Passing Year</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputHighPassingYear"
+                                            name="highPassingYear">
+                                    </div>
+
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="highPercentage" class="col-sm-3 col-form-label">Percentage</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputHighPercentage"
+                                            name="highPercentage">
+                                    </div>
+                                </div>
+                                <h4>Intermediate/Diploma</h4>
+                                <div class="row mb-3">
+                                    <label for="interRollnum" class="col-sm-3 col-form-label">Roll Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputRollNumber"
+                                            name="interRollNum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="InterPassigyear" class="col-sm-3 col-form-label">Passing
+                                        Year</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputInterPassingYear"
+                                            name="interPassingYear">
+                                    </div>
+
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="interPercentage" class="col-sm-3 col-form-label">Percentage</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputInterPercentage"
+                                            name="interPercentage">
+                                    </div>
+                                </div>
+
+                                <h4 class="my-4  text-center">Current Qualification</h4>
+                                <div class="row mb-3">
+                                    <label for="Course" class="col-sm-3 col-form-label">Course</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputCourse" name="currentCourse">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Roll Number" class="col-sm-3 col-form-label">Roll Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputrollnumber"
+                                            name="currentRollnum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputDeparment" class="col-sm-3 col-form-label">Department</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputDeparment" name="deptname">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="ovarallpercentage" class="col-sm-3 col-form-label">Overall
+                                        Percentage</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputOverallpercentage"
+                                            name="currentPercentage">
+                                    </div>
+                                </div>
+                                <h4>Semester Percentage</h4>
+                                <div class="row mb-3">
+                                    <label for="Firstsemester" class="col-sm-3 col-form-label">First
+                                        Semester</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="input1stSemester" name="firstsem">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="2semester" class="col-sm-3 col-form-label">Second Semester</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="input2stSemester"
+                                            name="secondsem">
+                                    </div>
+
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="3rdSemseter" class="col-sm-3 col-form-label">Third Semester</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="input3rdSemester" name="thirdsem">
+                                    </div>
+
+                                </div>
+                                <h2 class="my-4 text-center">Contacts</h2>
+                                <div class="row mb-3">
+                                    <label for="PrimaryMobileNum" class="col-sm-3 col-form-label">Primary Mobile
+                                        Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputPmobileNum" name="pmobile">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="AlternateMobileNum" class="col-sm-3 col-form-label">Alternate Mobile
+                                        Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputalternateMobilenum"
+                                            name="altmobile">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputPEmail" class="col-sm-3 col-form-label">Primary Email
+                                        Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="inputPEmail3" name="pemail">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="AlternateEmailaddress" class="col-sm-3 col-form-label">Alternate
+                                        Email
+                                        Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="inputalternateEmailaddress"
+                                            name="altemail">
+                                    </div>
+                                </div>
+                                <h4>Current Address</h4>
+                                <div class="row mb-3">
+                                    <label for="VillageHouseNo" class="col-sm-3 col-form-label">Village/House
+                                        No.</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputvillagehouseno"
+                                            name="cHouseNum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Locality" class="col-sm-3 col-form-label">Locality</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputlocality" name="clocality">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputDistrict" class="col-sm-3 col-form-label">District</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputDistrict" name="cdistrict">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="State" class="col-sm-3 col-form-label">State</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputState" name="cstate">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Pincode" class="col-sm-3 col-form-label">Pincode</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputpincode" name="cpincode">
+                                    </div>
+                                </div>
+                                <h4>Permanent Address</h4>
+                                <div class="row mb-3">
+                                    <label for="VillageHouseNo" class="col-sm-3 col-form-label">Village/House
+                                        No.</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputvillagehouseno"
+                                            name="phousenum">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Locality" class="col-sm-3 col-form-label">Locality</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputlocality" name="plocality">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputDistrict" class="col-sm-3 col-form-label">District</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputDistrict" name="pdistrict">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="State" class="col-sm-3 col-form-label">State</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputState" name="pstate">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Pincode" class="col-sm-3 col-form-label">Pincode</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="inputpincode" name="ppincode">
+                                    </div>
+                                </div>
+
+                                <h2 class="my-4 text-center">Curricular Activites</h2>
+                                <div class="row mb-3">
+                                    <label for="RegistrationNum" class="col-sm-3 col-form-label">Sports
+                                        Achievement</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputSportsAchievement"
+                                            name="sports">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Volunteered" class="col-sm-3 col-form-label">Volunteered</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputVolunteered" name="volunteer">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="Seminars" class="col-sm-3 col-form-label">Seminars</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputSeminars" name="seminar">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </form>
+                    </div>
+                    <div class="col-1">
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-1">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    {{>footer}}
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

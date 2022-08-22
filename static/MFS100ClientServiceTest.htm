@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>MFS100 Web Test</title>
+    <link rel="stylesheet" href="style.css">
+    </style>
+    <script src="jquery-1.8.2.js"></script>
+    <script src="mfs100-9.0.2.6.js"></script>
+    <script>
+        function takevalue() {
+            var Name = document.getElementById("user").value;
+            var key = document.getElementById("password").value;
+            var finalsubmit = document.getElementById("sumbit").value;
+            alert("Submitted Sucessfully")
+        }
+    </script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+</head>
+
+<body>
+    <!-- Modal to login with biometric device -->
+    <div class="modal fade" id="deviceLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Smart Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <table width="100%" style="padding-top:0px;">
+                        <tr>
+                            <td width="200px;">
+                                <table align="left" border="0" width="auto">
+                                    <tr>
+                                        <td>
+                                            <input type="submit" id="btnInfo" value="Get Info"
+                                                class="btn btn-primary btn-100" onclick="return GetInfo()" />
+                                        </td>
+                                        <td>
+                                            <input type="submit" id="btnCapture" value="Capture"
+                                                class="btn btn-primary btn-100" onclick="return Capture()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <input type="submit" id="btnCaptureAndMatch" value="Capture and Match"
+                                                class="btn btn-primary btn-200" onclick="return Match()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <input type="submit" id="btnMatch" value="Match"
+                                                class="btn btn-primary btn-200" onclick="return Verify()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" id="btnGetPid" value="Get PID (X)"
+                                                class="btn btn-primary btn-100" onclick="return GetPid()" />
+                                        </td>
+                                        <td>
+                                            <input type="submit" id="btnProtoGetPid" value="Get PID (P)"
+                                                class="btn btn-primary btn-100" onclick="return GetProtoPid()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" id="btnGetRbd" value="Get RBD (X)"
+                                                class="btn btn-primary btn-100" onclick="return GetRbd()" />
+                                        </td>
+                                        <td>
+                                            <input type="submit" id="btnProtoGetRbd" value="Get RBD (P)"
+                                                class="btn btn-primary btn-100" onclick="return GetProtoRbd()" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="150px" height="190px" align="center" class="img">
+                                <img id="imgFinger" width="145px" height="188px" alt="Finger Image" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal to get info about device -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Biometric Device Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <table align="left" border="0"
+                        style="font-size: 12px; width:100%; padding-right:20px; color: rgb(0, 127, 127);">
+                        <tr class="sabKuchHideHojayega">
+                            <td style="width: 100px;">Key:</td>
+                            <td colspan="3">
+                                <input type="text" value="" id="txtKey" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 100px;">Serial No:</td>
+                            <td align="left" style="width: 150px;" id="tdSerial"></td>
+                            <td align="left" style="width: 100px;">Certification:</td>
+                            <td align="left" id="tdCertification"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Make:</td>
+                            <td align="left" id="tdMake"></td>
+                            <td align="left">Model:</td>
+                            <td align="left" id="tdModel"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Width:</td>
+                            <td align="left" id="tdWidth"></td>
+                            <td align="left">Height:</td>
+                            <td align="left" id="tdHeight"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Local IP</td>
+                            <td align="left" id="tdLocalIP"></td>
+                            <td align="left">Local MAC:</td>
+                            <td align="left" id="tdLocalMac"></td>
+                        </tr>
+                        <tr>
+                            <td align="left">Public IP</td>
+                            <td align="left" id="tdPublicIP"></td>
+                            <td align="left">System ID</td>
+                            <td align="left" id="tdSystemID"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal to get info of device-->
+
+
+
+
+    <form onsubmit="takevalue()" class="box" action="index.html" method="post">
+        <h1>Login</h1>
+        <input type="text" id="user" placeholder="username">
+        <input type="password" id="password" placeholder="password">
+        <input type="submit" id="sumbit" value="Login">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deviceLogin">Biometric
+            Login
+        </button>
+        <button type="button" class="btn btn-primary" value="Get Info" id="btnInfo" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return GetInfo()">
+            Device Info
+        </button>
+    </form>
+
+
+<!-- 
+    <input type="submit" id="btnInfo" value="Get Info" class="btn btn-primary btn-100" onclick="return GetInfo()" />
+    <table width="100%" style="padding-top:0px;">
+        <tr>
+            <td width="200px;">
+                <table align="left" border="0" width="100%">
+                    <tr>
+                        <td>
+                            <input type="submit" id="btnInfo" value="Get Info" class="btn btn-primary btn-100"
+                                onclick="return GetInfo()" />
+                        </td>
+                        <td>
+                            <input type="submit" id="btnCapture" value="Capture" class="btn btn-primary btn-100"
+                                onclick="return Capture()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="btnCaptureAndMatch" value="Capture and Match"
+                                class="btn btn-primary btn-200" onclick="return Match()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="btnMatch" value="Match" class="btn btn-primary btn-200"
+                                onclick="return Verify()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="btnGetPid" value="Get PID (X)" class="btn btn-primary btn-100"
+                                onclick="return GetPid()" />
+                        </td>
+                        <td>
+                            <input type="submit" id="btnProtoGetPid" value="Get PID (P)" class="btn btn-primary btn-100"
+                                onclick="return GetProtoPid()" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="btnGetRbd" value="Get RBD (X)" class="btn btn-primary btn-100"
+                                onclick="return GetRbd()" />
+                        </td>
+                        <td>
+                            <input type="submit" id="btnProtoGetRbd" value="Get RBD (P)" class="btn btn-primary btn-100"
+                                onclick="return GetProtoRbd()" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="150px" height="190px" align="center" class="img">
+                <img id="imgFinger" width="145px" height="188px" alt="Finger Image" />
+            </td>
+            <td>
+                <table align="left" border="0" style="width:100%; padding-right:20px; color: rgb(0, 127, 127);">
+                    <tr>
+                        <td style="width: 100px;">Key:</td>
+                        <td colspan="3">
+                            <input type="text" value="" id="txtKey" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" style="width: 100px;">Serial No:</td>
+                        <td align="left" style="width: 150px;" id="tdSerial"></td>
+                        <td align="left" style="width: 100px;">Certification:</td>
+                        <td align="left" id="tdCertification"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">Make:</td>
+                        <td align="left" id="tdMake"></td>
+                        <td align="left">Model:</td>
+                        <td align="left" id="tdModel"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">Width:</td>
+                        <td align="left" id="tdWidth"></td>
+                        <td align="left">Height:</td>
+                        <td align="left" id="tdHeight"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">Local IP</td>
+                        <td align="left" id="tdLocalIP"></td>
+                        <td align="left">Local MAC:</td>
+                        <td align="left" id="tdLocalMac"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">Public IP</td>
+                        <td align="left" id="tdPublicIP"></td>
+                        <td align="left">System ID</td>
+                        <td align="left" id="tdSystemID"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table> -->
+
+
+
+    <!-- No need to bother about the code below -->
+
+    <div class="panel sabKuchHideHojayega">
+        <table width="100%">
+            <tr>
+                <td width="220px">
+                    Status:
+                </td>
+                <td>
+                    <input type="text" value="" id="txtStatus" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Quality:
+                </td>
+                <td>
+                    <input type="text" value="" id="txtImageInfo" class="form-control" />
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    NFIQ:
+                </td>
+                <td>
+                    <input type="text" value="" id="txtNFIQ" class="form-control" />
+                </td>
+            </tr> -->
+            <tr>
+                <td>
+                    Base64Encoded ISO Template
+                </td>
+                <td>
+                    <textarea id="txtIsoTemplate" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Base64Encoded ANSI Template
+                </td>
+                <td>
+                    <textarea id="txtAnsiTemplate" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Base64Encoded ISO Image
+                </td>
+                <td>
+                    <textarea id="txtIsoImage" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Base64Encoded Raw Data
+                </td>
+                <td>
+                    <textarea id="txtRawData" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Base64Encoded Wsq Image Data
+                </td>
+                <td>
+                    <textarea id="txtWsqData" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Encrypted Base64Encoded Pid/Rbd
+                </td>
+                <td>
+                    <textarea id="txtPid" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Encrypted Base64Encoded Session Key
+                </td>
+                <td>
+                    <textarea id="txtSessionKey" style="width: 100%; height:50px;" class="form-control"> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Encrypted Base64Encoded Hmac
+                </td>
+                <td>
+                    <input type="text" value="" id="txtHmac" class="form-control" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ci
+                </td>
+                <td>
+                    <input type="text" value="" id="txtCi" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Pid/Rbd Ts
+                </td>
+                <td>
+                    <input type="text" value="" id="txtPidTs" class="form-control" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
